@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Javascript 사용하는 공간
+        // 함수를 생성
+        // 주소를 이동을 하는 함수
+        function add(){
+            // localhost:3000/board/add 주소로 이동
+            location.href = "/board/add"
+        }
+        // 선택된 게시글의 정보를 담아서 info 주소로 보내주는 작업
+        /*
+            function 함수명(매개변수){
+                    함수 호출시 실행 될 코드
+            }
+
+            함수명(인자)
+
+            location.href : url 호출
+            호출 방식  :  get
+            get 방식에서 데이터를 보낼때 url에 실어서 보냄
+            localhost:3000/?key=value&key2=value2
+        */
+        function contents(no){
+            location.href = "/board/info?_no="+no
+            // alert("/board/info?_no="+no)
+        }
+    </script>
+</head>
+<body>
+    <h1>게시판</h1>
+    <!-- 
+        게시글들이 들어오는 공간 table 게시글을 표현
+        [{no:1, title:제목, contents:내용, writer:나},
+        {}, ...]
+     -->
+     <table border="1">
+        <tr>
+            <th>글 번호</th>
+            <th>글 제목</th>
+            <th>작성자</th>
+        </tr>
+        <!-- for문 사용 작업
+        for(초기조건; 조건식; 증감식){
+            반복 실행될 코드
+        } -->
+        <% for(var i=0; i < content.length; i++){%>
+            <tr onclick="contents('<%=content[i].No%>')">
+                <td><%=content[i].No%></td>
+                <td><%=content[i].title%></td>
+                <td><%=content[i].writer%></td>
+            </tr>
+        <%}%>
+     </table>
+     <!-- 글쓰기 버튼 
+    글을 쓰는 페이지로 이동 -->
+     <button onclick="add()">글 쓰기</button>
+</body>
+</html>
