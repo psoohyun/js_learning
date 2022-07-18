@@ -1,6 +1,7 @@
 var express = require("express")
 var app = express()
 var session = require("express-session")
+require('dotenv').config()
 
 // post 통신 방식 데이터를 받기 위한 초기 설정 초기 설정
 app.use(express.json())
@@ -13,7 +14,7 @@ app.set("view engine", "ejs")
 // 세션을 설정
 app.use(
     session({
-        secret : "jdfzbkfbvoi",
+        secret : process.env.session_secretkey,
         resave : false,
         saveUninitialized : true
     })
@@ -22,11 +23,11 @@ app.use(
 // mysql 설정 (데이터베이스에서 접속 설정)
 var mysql = require("mysql2")
 var connection = mysql.createConnection({
-    host : "localhost",
-    port : 3306,
-    user : "root",
-    password : "1234",
-    database : "blockchain"
+    host : process.env.host,
+    port : process.env.port,
+    user : process.env.user,
+    password : process.env.password,
+    database : process.env.database
 })
 
 // contract에 접속 설정
