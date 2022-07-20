@@ -1,0 +1,9 @@
+07.19
+
+여태까지 truffle, nodemon 을 -g 옵션으로 설치하였음
+
+truffle의 실행 명령어는 truffle deploy --network baobab 이다.
+
+07.20
+
+html에서 router 비슷한걸 만들기 - menu.ejs
