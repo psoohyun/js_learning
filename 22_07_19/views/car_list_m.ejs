@@ -30,7 +30,11 @@
         }
       }
     </style>
-
+    <script>
+      function check(num){
+        location.href = '/check_info?_num='+num
+      }
+    </script>
     
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
@@ -53,45 +57,32 @@
   <div class="row g-5">
     <div class="col-md-8">
       <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        Example table
+        Example list
       </h3>
 
-      <article class="blog-post">
-        <table class="table">
-          <thead>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>차량 번호</th>
+            <th>차량 연식</th>
+            <th>차량 종류</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%if(list.length ==0){ %>
             <tr>
-              <th>Name</th>
-              <th>Upvotes</th>
-              <th>Downvotes</th>
+              <td colspan="3">등록된 차량이 없습니다.</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Alice</td>
-              <td>10</td>
-              <td>11</td>
-            </tr>
-            <tr>
-              <td>Bob</td>
-              <td>4</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>Charlie</td>
-              <td>7</td>
-              <td>9</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Totals</td>
-              <td>21</td>
-              <td>23</td>
-            </tr>
-          </tfoot>
-        </table>
-
-      </article>
+          <% }else{
+            for (var i = 0; i < list.length; i++){ %>
+              <tr onclick="check('<%=list[i].num%>')">
+                <td><%=list[i].num %></td>
+                <td><%=list[i].year %></td>
+                <td><%=list[i].type %></td>
+              </tr>
+          <% }} %>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -103,8 +94,6 @@
     <a href="#">Back to top</a>
   </p>
 </footer>
-
-
     
   </body>
 </html>

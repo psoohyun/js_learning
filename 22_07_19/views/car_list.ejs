@@ -30,7 +30,11 @@
         }
       }
     </style>
-
+    <script>
+      function check(num){
+        location.href = '/check?_num='+num
+      }
+    </script>
     
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
@@ -71,7 +75,7 @@
             </tr>
           <% }else{
             for (var i = 0; i < list.length; i++){ %>
-              <tr>
+              <tr onclick="check('<%=list[i].num%>')">
                 <td><%=list[i].num %></td>
                 <td><%=list[i].year %></td>
                 <td><%=list[i].type %></td>
